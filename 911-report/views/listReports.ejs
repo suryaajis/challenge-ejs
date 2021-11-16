@@ -1,0 +1,45 @@
+<%- include('partials/header')  %> 
+<body id="myPage">
+  <%- include('partials/navbar') %>
+
+  <div class="w3-container w3-content" style="max-width:800px; margin-top: 50px; margin-bottom: 50px; height:100%">
+  
+    <h1 style="margin-bottom: 30px;">List Reports</h1>
+  
+    <form action="/reports?" method="GET" style="display: flex;">
+      <input class="w3-input w3-border" type="text" name="event"  placeholder="Search by event" style="width: 300px; margin-right: 10px;">
+      <input class="w3-input w3-border" type="number" name="age" placeholder="Search by age" style="width:150px; margin-right: 10px;">
+      <input type="submit" class="w3-btn w3-round w3-dark-grey" value="Search">
+    </form>
+  
+    <%# console.log(dataAge) %>
+    <% if (dataAge.max !== null && dataAge.min !== null && dataAge.avg !== null) { %>
+      <div class="w3-center w3-round" style="background-color: sandybrown; height: 50px; margin: 10px 0; padding-top: 0.5px;">
+        <p>The oldest person is <%= dataAge.max %> years old, the youngest is <%= dataAge.min %> years old, and average all age is <%= dataAge.avg %> years old</p>
+      </div>
+    <% } else { %>
+      <div class="w3-center w3-round" style="background-color: sandybrown; height: 50px; margin: 10px 0; padding-top: 0.5px;">
+        <p>There is no data</p>
+      </div>
+    <% } %> 
+  
+    <table class="w3-table w3-border w3-bordered">
+      <tr class="w3-black">
+        <th>Date</th>
+        <th>Event</th>
+        <th>Actions</th>
+      </tr>
+      <% dataReport.forEach(report => { %>
+        <tr>
+          <td><%= report.formatDate %></td>
+          <td><%= report.event %></td>
+          <td>
+            <a href="/reports/<%= report.id %>" class="w3-btn w3-round w3-green">See Detail</a>
+            <a href="/reports/<%= report.id %>/delete" class="w3-btn w3-round w3-red">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table><br>
+  </div>
+
+<%- include('partials/footer') %>

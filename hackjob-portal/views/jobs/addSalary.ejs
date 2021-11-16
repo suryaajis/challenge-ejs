@@ -1,0 +1,20 @@
+<%- include('../partials/header') %> 
+  
+  <div class="container mt-5">
+    <h2 class="text-center">Form Add for <%= dataJob.title %></h2>
+  
+    <form action="/jobs/<%= dataJob.id %>/add-salary" method="POST">
+      <label class="form-label">Base Salary</label><br>
+      <input class="form-control" type="number" name="baseSalary"><br><br>
+  
+      <label class="form-label">Bonus Salary</label><br>
+      <input class="form-control" type="number" name="bonusSalary"><br><br>
+  
+      <input type="submit" value="Save" class="btn btn-primary">
+      <a href="/jobs/<%= dataJob.id %>/detail" class="btn btn-danger">Cancel</a>
+    </form>
+  </div>
+
+
+
+<%- include('../partials/footer') %> 

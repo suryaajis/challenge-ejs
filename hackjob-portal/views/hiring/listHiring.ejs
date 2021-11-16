@@ -1,0 +1,30 @@
+<%- include('../partials/header') %> 
+<div class="container mt-5">
+  <h1 class="text-center mb-5">List Hiring</h1>
+
+  <form class="mb-3 d-flex" action="/hiring?" method="GET">
+    <input type="text" name="search" class="form-control">
+    <input type="submit" value="Search" class="btn btn-dark" style="margin-left: 10px;">
+  </form>
+  <table class="table" border="2">
+    <tr>
+      <th>Title</th>
+      <th>Department</th>
+      <th>Vacancy</th>
+      <th>Posted On</th>
+      <th>Action</th>
+    </tr>
+    <% dataJobs.forEach(job => { %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= job['Department.departmentName'] %></td>
+        <td><%= job.vacancy %></td>
+        <td><%= formatDate(job.createdAt) %></td>
+        <td><a href="/hiring/<%= job.id %>/detail" class="btn btn-secondary">Detail</a></td>
+      </tr>
+    <% }) %> 
+  </table><br>
+</div>
+
+<%- include('../partials/footer') %> 
+<%# console.log(dataJobs) %> 

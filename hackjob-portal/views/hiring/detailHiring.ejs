@@ -1,0 +1,70 @@
+<%- include('../partials/header') %> 
+<div class="container mt-5">
+  <h1 class="mb-5">Applying at HackJob Portal</h1>
+
+  <div class="border mb-3" style="padding: 10px;">
+    
+    <p><strong>Job Title :</strong> <%= data.job.title %></p>
+  
+    <p><strong>Department :</strong> <%= data.job['Department.departmentName'] %></p>
+  
+    <p><strong>Vacancy :</strong> <%= data.job.vacancy %></p>
+  
+    <p><strong>Requirement :</strong><br><%= data.job.requirement %> </p>
+  
+    <% if (data.job['Salary.id'] === null) { %>
+      <p><strong>Base Salary</strong></p>
+      <p><strong>Bonus</strong></p>
+    <% } else { %>
+      <p><strong>Base Salary</strong> <%= data.job['Salary.amount'] %></p>
+      <p><strong>Bonus</strong> <%= data.job['Salary.bonus'] %></p>
+    <% } %>
+  
+    <p><strong>Last Update :</strong> <%= formatDate(data.job.updatedAt) %></p>
+  
+    <p><strong>Total Applied: </strong><%= data.applicants.length  %></p>
+  </div>
+
+  <% if(data.applicants.length < data.job.vacancy) { %>
+    <a class="btn btn-success" href="/hiring/<%= data.job.id  %>/apply">Apply</a>
+  <% }  %>
+
+
+  <table border="2" class="table mt-4">
+    <tr>
+      <th>Fullname</th>
+      <th>Applicant Code</th>
+      <th>Gender</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Data Applied</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    <% if (data.applicants.length === 0) { %>
+      <tr>
+      </tr>
+    <% } else { %>
+      <% data.applicants.forEach(applicant => { %>
+        <tr>
+          <td><%= applicant.fullName %></td>
+          <td><%= applicant.applicantCode %></td>
+          <td><%= applicant.gender %></td>
+          <td><%= applicant.email %></td>
+          <td><%= applicant.phone %></td>
+          <td><%= formatDate(applicant.dateApplied) %></td>
+          <td><%= applicant.status %></td>
+          <td>
+            <% if (applicant.status === 'pending') { %>
+              <a href="/hiring/<%= applicant.JobId  %>/apply/<%= applicant.id %>/approve" class="btn btn-primary">Approve</a>
+              <a href="/hiring/<%= applicant.JobId  %>/apply/<%= applicant.id %>/reject" class="btn btn-danger">Reject</a>
+            <% } %>
+          </td>
+        </tr>
+      <% }) %> 
+    <% } %> 
+  </table><br>
+</div>
+
+<%- include('../partials/footer') %> 
+<%# console.log(data) %> 

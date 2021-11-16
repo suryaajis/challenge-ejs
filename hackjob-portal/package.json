@@ -1,0 +1,30 @@
+{
+  "name": "hack-job-portal",
+  "version": "1.0.0",
+  "description": "Merupakan challenge yang dinilai 💯\r ```txt\r Terbagi 2 Deadline :\r - Part 1 W4D2 09.00 WIB\r - Part 2 W4D3 09.00 WIB\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmt-16-paris-fox/hack-job-portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rmt-16-paris-fox/hack-job-portal/issues"
+  },
+  "homepage": "https://github.com/rmt-16-paris-fox/hack-job-portal#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "sequelize": "^6.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "sequelize-cli": "^6.2.0"
+  }
+}

@@ -1,0 +1,30 @@
+<%- include('../partials/header') %> 
+
+  <div class="container">
+    <h2 class="text-center mt-3 mb-3">Form Add Job</h2>
+  
+    <form action="/jobs/add" method="POST">
+      <label class="form-label">Title</label><br>
+      <input class="form-control" type="text" name="title"><br><br>
+  
+      <label class="form-label">Department</label><br>
+      <select class="form-select" name="DepartmentId">
+        <option value="" selected disabled>Select Department</option>
+        <% dataDepartment.forEach(dpt => { %>
+          <option value="<%= dpt.id %>"><%= dpt.departmentName %></option>
+        <% }) %> 
+      </select><br><br>
+  
+      <label class="form-label">Requirement</label><br>
+      <textarea name="requirement" class="form-control"></textarea><br><br>
+  
+      <label class="form-label">Vacancy</label><br>
+      <input class="form-control" type="number" name="vacancy"><br><br>
+  
+      <input class="btn btn-primary" type="submit" value="Save">
+      <a href="/jobs" class="btn btn-danger">Cancel</a>
+    </form>
+  </div>
+
+<%- include('../partials/footer') %> 
+<%# console.log(dataDepartment) %> 

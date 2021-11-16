@@ -1,0 +1,35 @@
+<%- include('../partials/header') %> 
+  <div class="container mt-5">
+    <h2 class="mb-3">Applying at HackJob Portal</h2>
+  
+    <% if (dataDetail['Salary.id'] === null) { %>
+      <a href="/jobs/<%= dataDetail.id %>/add-salary" class="btn btn-info">Add Salary Info</a>
+    <% } %>
+    <a href="/jobs/<%= dataDetail.id %>/edit" class="btn btn-secondary">Edit Job Info</a><br>
+  
+    <div class="mt-3 border" style="padding: 10px;">
+      <p><strong>Job Title :</strong> <%= dataDetail.title %></p>
+    
+      <p><strong>Department :</strong> <%= dataDetail['Department.departmentName'] %></p>
+    
+      <p><strong>Vacancy :</strong> <%= dataDetail.vacancy %></p>
+    
+      <p><strong>Requirement :</strong><br><%= dataDetail.requirement %> </p>
+    
+      <% if (dataDetail['Salary.id'] === null) { %>
+        <p><strong>Base Salary</strong></p>
+        <p><strong>Bonus</strong></p>
+      <% } else { %>
+        <p><strong>Base Salary</strong> <%= dataDetail['Salary.amount'] %></p>
+        <p><strong>Bonus</strong> <%= dataDetail['Salary.bonus'] %></p>
+      <% } %>
+    
+      <p><strong>Last Update :</strong> <%= formatDate(dataDetail.updatedAt) %></p>
+    </div>
+  
+    <br>
+    <a class="btn btn-dark" href="/jobs">List Jobs</a>
+  </div>
+
+<%- include('../partials/footer') %> 
+<%# console.log(dataDetail) %> 

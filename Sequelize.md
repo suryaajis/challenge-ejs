@@ -79,24 +79,3 @@
 
 > ALL STEPS COMPLETE
 
-> NB: LiveCode 3 
-* Release 0 : set database, model, migration (create table)
-* Release 1 : add migration to add column Foreign Key
-* Release 2 : seeding data
-* Release 3 : Routing 
-    * get /
-    * get /question
-    * get /question/add
-    * post /question/add
-    * get /question/edit
-    * post /question/edit
-    * get /question/delete
-* Release 4 : Show Data from Routing (Read, Create, Update, Delete)
-* Release 5 : Hooks (beforeCreate, static method, instance method)
-* Release 6 : Validate (notEmpty, custom validate)
-* Release 7 : Helpers (formatData)
-* Release 8 : Search Features
-    * const [Op] from sequelize
-    * let option = {} => if(any) option.where.column : {[Op.iLike]: `%text%`}
-* Release 9 : add Feature
-    

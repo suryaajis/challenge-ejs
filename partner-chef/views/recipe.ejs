@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+  <%- include('partials/navbar') %>
+  <header style="margin-top: 100px; margin-bottom: 50px;">
+    <h2>Data Recipes</h2>
+  </header>
+
+  <div class="w3-container" style="width: 85%; margin: auto;">
+    
+  
+    <div class="search-container">
+      <button class="w3-btn w3-light-blue w3-round" style="height: 38px; margin-bottom: 20px;"><a href="/recipes/add">ADD RECIPE</a></button>
+        
+        <form action="/recipes?search" style="display: flex;" method="GET">
+          <input type="text" class="w3-bar-item w3-input w3-border w3-round" placeholder="Search.." name="search">
+          <button type="submit" class="w3-light-blue"><i class="fa fa-search" style="width: 40px;"></i></button>
+        </form>
+        <br>
+    </div>
+  
+    <table class="w3-table-all w3-hoverable w3-centered" style="margin-bottom: 200px;">
+      <tr style="background-color:skyblue;">
+        <th>Name</th>
+        <th>Duration</th>
+        <th>Category</th>
+        <th>Total Vote</th>
+        <th>Action</th>
+      </tr>
+      <% data.forEach(recipe => { %>
+        <tr>
+          <td><%= recipe.name %></td>
+          <td><%= recipe.duration %></td>
+          <td><%= recipe.category %></td>
+          <td><%= recipe.totalVote %></td>
+          <td style="text-align: center;">
+            <button class="w3-btn w3-round-large"><a href="/recipes/<%= recipe.id %>">READ MORE</a></button>
+            <button class="w3-btn w3-round-large"><a href="/recipes/<%= recipe.id %>/edit">EDIT</a></button>
+            <button class="w3-btn w3-round-large"><a href="/recipes/<%= recipe.id %>/delete">DELETE</a></button>
+          </td>
+        </tr>
+      <% }) %>
+    </table><br>
+  </div>
+  
+  <%- include('partials/footer') %>

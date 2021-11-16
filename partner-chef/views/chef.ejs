@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+    <header style="margin-top: 100px;">
+      <h2>Data Chefs</h2>
+    </header>
+
+    <div class="w3-container">
+      <table class="w3-table-all w3-hoverable">
+        <tr style="background-color:skyblue;">
+          <th>Full Name</th>
+          <th>Birth Date</th>
+          <th>Gender</th>
+          <th>City</th>
+        </tr>
+      <% data.forEach(chef => { %>
+        <tr>
+          <td><%= chef.fullName %></td>
+          <td><%= chef.formatBirthDate %></td>
+          <td><%= chef.gender %></td>
+          <td><%= chef.city %></td>
+        </tr>
+      <% }) %>
+      </table><br>
+      <button class="w3-btn w3-white w3-border w3-round-large"><a href="/chefs/detail">Chef Detials</a></button>
+      <button class="w3-btn w3-white w3-border w3-round-large"><a href="/">Back to Home</a></button>
+    </div>
+<%- include('partials/footer') %>

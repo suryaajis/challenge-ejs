@@ -1,0 +1,95 @@
+<%- include('partials/header') %>
+<style>
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: rgb(48, 88, 219);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: rgb(20, 68, 224);
+  }
+  
+  .container {
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px;
+  }
+
+  label{font-size: 16px;}
+  </style>
+<body>
+  <%- include('partials/navbar') %>
+  <header style="margin-top: 100px;">
+    <h2>ADD RECIPE</h2>
+  </header>
+
+
+  <div class="container" style="margin-top: 20px; margin-bottom: 200px;">
+    <div class="w3-card">
+      <% if (errors) { %>
+        <% errors.forEach(err => { %>
+       <p style="color: red; margin:0 20px;"><%= err %></p>
+        <% }) %>
+      <% } %>
+    </div>
+    
+    
+    <form action="/recipes/add" method="POST" class="w3-container w3-padding-64">
+      <!-- name di input = colum name -->
+      <label for="recipeName">Recipe</label>
+      <input type="text" id="recipeName" name="name" placeholder="Recipe name" class="w3-input w3-padding-16 w3-round">
+      
+      <label for="duration">Duration</label>
+      <input class="w3-input w3-padding-16 w3-round" type="number" placeholder="Minutes" name="duration">
+      
+      <br><br>
+  
+      <label for="category">Category</label>
+      <select id="category" name="category" class="w3-input w3-padding-16 w3-round">
+        <option value="">--- SELECT ONE ---</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="other">Other</option>
+      </select>
+  
+      <label for="notes">Notes</label>
+      <textarea class="w3-input w3-padding-16 w3-round" id="notes" name="notes" placeholder="Write something.." style="height:200px"></textarea>
+  
+      <label for="imageUrl">Image URL:</label>
+      <input class="w3-input w3-padding-16 w3-round" type="text" name="imageUrl" id="imageUrl">
+
+      <label for="chefName">Chef</label>
+      <select class="w3-input w3-padding-16 w3-round" id="chefName" name="ChefId">
+        <option value="">--- SELECT ONE ---</option>
+        <% data.forEach(el => { %>
+          <option value="<%= el.id %>"><%= el.fullName %></option>
+        <% }) %>
+      </select>
+
+      <label for="createdDate">Created Date</label><br>
+      <input class="w3-input w3-padding-16 w3-round" type="date" name="createdDate" id="createdDate"><br>
+
+      <input type="submit" value="Submit" class="w3-btn w3-light-blue">
+    </form>
+    <hr>
+    <button class="w3-btn w3-white w3-border w3-round-large"><a href="/recipes">Back to List Recipes</a></button>
+    <button class="w3-btn w3-white w3-border w3-round-large"><a href="/">Back to Home</a></button>
+  </div>
+  
+<%- include('partials/footer') %>

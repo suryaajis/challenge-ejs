@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+  <%- include('partials/navbar') %>
+  <header style="margin-top: 100px;">
+    <h2><%= data.name %></h2>
+  </header>
+
+  <div class="w3-content" style="margin-bottom: 200px;">
+    <div class="w3-row w3-padding-64" id="about">
+      <div class="w3-col m6 w3-padding-large" style="text-align: right;">
+        <img src="<%= data.imageUrl %>" alt="recipeimg" class="w3-round w3-image" width="400" >
+      </div>
+  
+      <div class="w3-col m6 w3-padding-large">
+        <ul style="list-style-type: none; font-size: larger; line-height: 35px;">
+          <li>Total Vote : <%= data.totalVote %></li>
+          <li>Duration : <%= data.duration %></li>
+          <li>Category : <%= data.category %></li>
+          <li>Chef Name : <%= data.chefName %></li>
+          <li>The chef made recipe on <%= data.formatCreatedDate %></li>
+          <li><button class="w3-btn w3-round w3-light-blue" style="margin-top: 20px;">
+            <a href="/recipes/<%= data.id %>/vote">VOTE</a></button>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+      <hr>
+      <p style="white-space: pre-line;"><%= data.notes %></p>
+      <hr>
+      <button class="w3-btn w3-white w3-border w3-round-large"><a href="/recipes">Back to List Recipes</a></button>
+      <button class="w3-btn w3-white w3-border w3-round-large"><a href="/">Back to Home</a></button>
+  </div>
+
+
+<%- include('partials/footer') %>

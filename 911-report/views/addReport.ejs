@@ -1,0 +1,45 @@
+<%- include('partials/header') %> 
+<body class="">
+  <%- include('partials/navbar') %> 
+
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+      <h2 class="w3-wide w3-center" style="margin-bottom: 50px;">ADD REPORT</h2>
+
+          <form action="/reports/add" method="POST">
+            <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+              <div class="w3-half">
+                <label >First Name</label>
+                <input class="w3-input w3-border" type="text" name="firstName">
+              </div>
+              <div class="w3-half">
+                <label >Last Name</label>
+                <input class="w3-input w3-border" type="text" name="lastName">
+              </div>
+            </div><label>Age</label>
+            <input class="w3-input w3-border" type="number" name="age" style="width: 100px;">
+      
+            <label>Email</label>
+            <input class="w3-input w3-border" type="text" name="email">
+      
+            <label>NIK</label>
+            <input class="w3-input w3-border" type="text" name="nik">
+          
+            <label>Event</label>
+            <input class="w3-input w3-border" type="text" name="event">
+           
+            <label>Description</label>
+            <textarea name="description" class="w3-input w3-border"></textarea>
+      
+            <label>Photo</label>
+            <input class="w3-input w3-border" type="text" name="photo">
+      
+            <label>Date of Event</label>
+            <input class="w3-input w3-border" type="date" name="dateOfEvent">
+      
+            <button type="submit" class="w3-button w3-black w3-section">Send</button>
+            <a href="/" class="w3-button w3-black w3-section">Cancel</a>
+          </form>
+
+    </div>
+
+<%- include('partials/footer') %> 

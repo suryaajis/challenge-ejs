@@ -1,0 +1,53 @@
+<%- include('partials/header') %> 
+<body class="">
+  <%- include('partials/navbar') %> 
+
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center" style="margin-bottom: 50px;">EDIT REPORT</h2>
+        <form action="/reports/<%= data.id %>/edit" method="POST">
+          <div class="w3-row">
+            <div class="w3-col m4 l7">
+              <label>First Name</label>
+              <input class="w3-input w3-border" type="text" name="firstName" value="<%= data.firstName %>">
+              
+              <label>Last Name</label>
+              <input class="w3-input w3-border" type="text" name="lastName" value="<%= data.lastName %>">
+
+              <label>Age</label>
+              <input class="w3-input w3-border" type="number" name="age" style="width: 200px;" value="<%= data.age %>">
+
+            </div>
+            <div class="w3-col m8 l5 w3-right-align">
+              <img src="<%= data.photo %>" alt="" class="w3-round" style="width: 200px;">
+            </div>
+          </div>
+              
+
+          <label>Email</label>
+          <input class="w3-input w3-border" type="text" name="email" value="<%= data.email %>">
+
+          <label>NIK</label>
+          <input class="w3-input w3-border" type="text" name="nik" value="<%= data.nik %>">
+        
+          <label>Event</label>
+          <input class="w3-input w3-border" type="text" name="event" value="<%= data.event %>">
+          
+          <label>Description</label>
+          <textarea name="description" class="w3-input w3-border" ><%= data.description %></textarea>
+
+          <label>Photo</label>
+          <input class="w3-input w3-border" type="text" name="photo" value="<%= data.photo %>">
+
+          <label>Date of Event</label>
+          <input class="w3-input w3-border" type="date" name="dateOfEvent" value="<%= data.formatDateOfEvent %>">
+          <% console.log(data.formatDateOfEvent) %> 
+    
+          <button type="submit" class="w3-button w3-black w3-section">Update</button>
+          <a href="/reports" class="w3-button w3-black w3-section">Cancel</a>
+        </form>
+
+  </div>
+
+
+
+<%- include('partials/footer') %> 
